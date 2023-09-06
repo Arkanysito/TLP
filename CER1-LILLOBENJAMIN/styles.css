@@ -1,0 +1,35 @@
+
+.nosotros{
+    padding-top: 15px;
+}
+.card {
+    border-radius: 40px;
+    margin: auto; 
+
+}
+.btn-primary {
+    color: #FFF;
+    background-color: #6C757D;
+    border-color: #6C757D;
+}
+#contacto{
+    justify-content: space-between;
+    background-color: #f25252;
+    
+}
+.icons{ width:100px; height:100px; line-height:98px; text-align:center; font-size:40px}
+.icons:hover, .icons:focus, .icons:active, .icons.active, .open>.dropdown-toggle.icons {
+    color: #F6C270;
+    background-color: #F6C270;
+    border-color:#F6C270 ;  
+}
+
+
+#repo{
+   margin-top: 10px;
+    height: 130px;
+    width: 100%;
+    background-color: #f25252;
+    text-align: center;
+    padding: 50px;
+}
