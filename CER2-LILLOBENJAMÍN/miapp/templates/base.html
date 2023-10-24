@@ -1,0 +1,89 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/miapp/css-bs/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/miapp/css/base.css">
+    <title>Home</title>
+</head>
+    <body>        
+        <div class="container-fluid align-items-center" >
+            <!--Header-->
+            <div class="row" id="cabecera">
+                <div class="col col-sm-3 ">
+                    <img  class="img-fluid" style="height: 100%;" src="{% static "miapp/img/usm-logo.svg" %}" alt="LogoUsm">
+                </div>
+                <div class="col-9 d-none d-sm-block" style="height: 100%;"  id="cabecera2" >
+                    <h1> Sistema Integrado de Notificaciones </h1>
+                </div>
+            </div>     
+        </div>
+            <!--NavBar-->
+            <nav id="navbar">
+                <ul class="nav justify-content-center" >
+                    </li>
+                    <li class="nav-item">
+                    <a style="color: #004B85; " class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    <a style="color: #004B85;" class="nav-link" href="http://127.0.0.1:8000/admin/">Administración</a>
+                    </li>
+                </ul>
+            </nav>
+            <!--Filtro-->
+            
+            <!--Cards-->
+            <div class="row d-xxl-none">
+                {%for comunicado in comunicados %}
+                {%if comunicado.visible == True%}
+                <div class="col-xl-3 col-md-4 col-xs-12 " id="cartitas">
+                    <div class="card mx-auto p-2" style="width: 15rem; height: 15rem; ;">
+                        <div class="card-body">
+                            <h5 class="card-titulo">{{comunicado.titulo}}</h5>
+                            <h6 class="card-departamento">{{comunicado.entidad.nombre}}</h6>
+                            <p class="card-text">{{comunicado.detalle_corto}}</p>
+                            <p class="card-text">{{comunicado.fecha_publicacion}}</p>                            
+                        </div>
+                      </div>
+                </div>
+                {%endif%}
+                {%endfor%}
+
+            </div>
+            <!--Carrusel-->
+            <div class="row d-none d-xxl-block">
+                <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel" data-interval="4000">
+                    <div class="carousel-inner">
+                    
+                {% for  comunicado in comunicados %}
+                {%if comunicado.visible == True%}
+                <div class="carousel-item  active " >
+                    <div class="card mx-auto p-2" style="width: 70rem; height: 20rem; margin:10px; " id="carrusel">
+                    <div class="card-body"> 
+                        <h5 class="card-titulo">{{comunicado.titulo}}</h5>
+                        <h6 class="card-departamento">{{comunicado.entidad.nombre}}</h6>
+                        <p class="card-detalle">{{comunicado.detalle}}</p>
+                        <p class="card-text">{{comunicado.fecha_publicacion}}</p>
+                    </div>
+                    </div>
+                </div>
+                {%endif%}
+                {% endfor %}
+
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <script src="static/miapp/js/bootstrap.js"></script>
+    </body>
+</html>
+
